@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "PlayerMixin"
+    "PlayerMixin",
+    "PlayerJumpCooldownMixin"
   ],
   "injectors": {
     "defaultRequire": 1
