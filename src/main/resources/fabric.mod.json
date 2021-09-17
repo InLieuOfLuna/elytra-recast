@@ -16,10 +16,8 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "me.lunaluna.fabric.elytrarecast.client.ElytraRecastClient"
     ],
     "main": [
-      "me.lunaluna.fabric.elytrarecast.ElytraRecast"
     ]
   },
   "mixins": [
