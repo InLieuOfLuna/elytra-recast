@@ -1,5 +1,6 @@
 package me.lunaluna.fabric.elytrarecast.mixin
 
+import me.lunaluna.fabric.elytrarecast.ElytraHelper
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.MinecraftClient
@@ -26,6 +27,7 @@ abstract class PlayerMixin {
 
     private val player: ClientPlayerEntity? = MinecraftClient.getInstance().player
     private val isPlayer: Boolean = equals(player)
+    private val elytraHelper: ElytraHelper? = if(isPlayer) ElytraHelper(player!!) else null
 
     @Inject(method = ["isFallFlying"], at = [At("TAIL")], cancellable = true)
     fun recastIfLanded(cir: CallbackInfoReturnable<Boolean>) { if (isPlayer) {
@@ -35,30 +37,10 @@ abstract class PlayerMixin {
             val elytra = cir.returnValue
             if (previousElytra && !elytra && timer >= recastCooldown) {
                 timer = 0
-                cir.returnValue = castElytra(player!!)
+                cir.returnValue = elytraHelper!!.castElytra()
             }
             previousElytra = elytra
         }
         previousTime = time
     } }
-
-    private fun castElytra(player: ClientPlayerEntity) = if (checkElytra(player) && checkFallFlyingIgnoreGround(player)) {
-        player.networkHandler.sendPacket(
-            ClientCommandC2SPacket(player, ClientCommandC2SPacket.Mode.START_FALL_FLYING)
-        )
-        true
-    } else false
-
-    private fun checkElytra(player: ClientPlayerEntity) = if (player.input.jumping && !player.abilities.flying && !player.hasVehicle() && !player.isClimbing) {
-        val itemStack = player.getEquippedStack(EquipmentSlot.CHEST)
-        itemStack.isOf(Items.ELYTRA) && ElytraItem.isUsable(itemStack)
-    } else false
-
-    private fun checkFallFlyingIgnoreGround(player: ClientPlayerEntity) = if (!player.isTouchingWater && !player.hasStatusEffect(StatusEffects.LEVITATION)) {
-        val itemStack = player.getEquippedStack(EquipmentSlot.CHEST)
-        if (itemStack.isOf(Items.ELYTRA) && ElytraItem.isUsable(itemStack)) {
-            player.startFallFlying()
-            true
-        } else false
-    } else false
 }
