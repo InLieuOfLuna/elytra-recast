@@ -19,8 +19,6 @@ class PlayerJumpCooldownMixin {
 
     @Inject(method = ["tickMovement"], at = [At("HEAD")])
     fun reduceCooldown(ci: CallbackInfo) {
-
         if (isPlayer && jumpingCooldown > 2) jumpingCooldown = 2
-
     }
 }
