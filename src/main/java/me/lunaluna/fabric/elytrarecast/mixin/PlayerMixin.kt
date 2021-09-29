@@ -1,6 +1,7 @@
 package me.lunaluna.fabric.elytrarecast.mixin
 
 import me.lunaluna.fabric.elytrarecast.ElytraHelper
+import me.lunaluna.fabric.elytrarecast.config.UserConfig
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.MinecraftClient
@@ -24,7 +25,7 @@ abstract class PlayerMixin {
 
     @Inject(method = ["isFallFlying"], at = [At("TAIL")], cancellable = true)
     fun recastIfLanded(cir: CallbackInfoReturnable<Boolean>) = timer.runOnCool {
-        if (isPlayer) {
+        if (isPlayer && UserConfig.Generic.ENABLED.booleanValue) {
             val elytra = cir.returnValue
             if (previousElytra && !elytra) {
                 cir.returnValue = elytraHelper!!.castElytra()
