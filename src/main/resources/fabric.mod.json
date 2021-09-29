@@ -4,9 +4,7 @@
   "version": "${version}",
   "name": "Elytra Recast",
   "description": "Recasts elytra when the player lands gliding and jumping",
-  "authors": [
-    "Luna"
-  ],
+  "authors": ["Luna"],
   "contact": {
     "website": "https://www.lunaluna.me",
     "repo": "https://github.com/InLieuOfLuna/elytra-recast/"
@@ -15,10 +13,8 @@
   "icon": "assets/elytra-recast/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
-    ],
-    "main": [
-    ]
+    "client": [],
+    "main": []
   },
   "mixins": [
     "elytra-recast.mixins.json"
