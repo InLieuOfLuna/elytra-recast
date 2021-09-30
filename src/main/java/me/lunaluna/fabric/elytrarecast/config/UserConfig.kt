@@ -10,10 +10,11 @@ import fi.dy.masa.malilib.config.options.ConfigInteger
 import fi.dy.masa.malilib.util.FileUtils
 import fi.dy.masa.malilib.util.JsonUtils
 import java.io.File
+import me.lunaluna.fabric.elytrarecast.Reference
 
 object UserConfig : IConfigHandler {
 
-    private const val CONFIG_FILE_NAME = "elytra-recast.json"
+    private const val CONFIG_FILE_NAME = "${Reference.MOD_ID}.json"
 
     object Generic {
         val ENABLED         = ConfigBoolean("enabled", true, "Is the mod enabled?")

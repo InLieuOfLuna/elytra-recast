@@ -13,7 +13,7 @@
   "icon": "assets/elytra-recast/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [],
+    "client": [ "me.lunaluna.fabric.elytrarecast.Startup"],
     "main": []
   },
   "mixins": [
