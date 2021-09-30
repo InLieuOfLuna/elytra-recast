@@ -22,6 +22,7 @@
   "depends": {
     "fabricloader": ">=0.11.7",
     "fabric": "*",
+    "malilib": "*",
     "minecraft": "1.17.1"
   }
 }
