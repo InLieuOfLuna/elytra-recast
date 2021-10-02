@@ -110,8 +110,6 @@ gradle-app.setting
 .gradletasknamecache
 
 **/build/
-
-# Common working directory
 run/
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
