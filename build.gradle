@@ -2,14 +2,11 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
-    }
+    dependencies { classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31" }
 }
 
 plugins {
     id 'fabric-loom' version '0.10-SNAPSHOT'
-    id 'maven-publish'
     id 'org.jetbrains.kotlin.jvm' version '1.5.30'
 }
 
@@ -21,16 +18,18 @@ repositories {
 }
 
 dependencies {
+    // Fabric loader and minecraft
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // Fabric API, not currently used.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation files("libs/malilib-fabric-${project.minecraft_version}-${project.malilib_version}.jar")
+    modCompileOnly files("libs/modmenu-${project.mod_menu_version}.jar")
 
-    modImplementation "fi.dy.masa.malilib:malilib-fabric-1.17.1:${project.malilib_version}"
+    // Kotlin
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31'
-    modCompileOnly "com.terraformersmc:modmenu:${project.mod_menu_version}"
 }
 
 processResources {
