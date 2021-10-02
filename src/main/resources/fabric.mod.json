@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "elytra-recast",
-  "version": "${version}",
+  "version": "${mod_version}",
   "name": "Elytra Recast",
   "description": "Recasts elytra when the player lands gliding and jumping",
   "authors": ["Luna"],
@@ -14,17 +14,13 @@
   "environment": "*",
   "entrypoints": {
     "client": [ "me.lunaluna.fabric.elytrarecast.Startup"],
-    "main": [],
-    "modmenu": [
-      "me.lunaluna.fabric.elytrarecast.modmenu.ModMenuImpl"
-    ]
+    "modmenu": [ "me.lunaluna.fabric.elytrarecast.modmenu.ModMenuImpl" ]
   },
   "mixins": [
     "elytra-recast.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.7",
-    "fabric": "*",
     "malilib": "*",
     "minecraft": "1.17.1"
   }
