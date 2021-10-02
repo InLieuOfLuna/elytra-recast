@@ -1,5 +1,6 @@
 package me.lunaluna.fabric.elytrarecast.mixin
 
+import me.lunaluna.fabric.elytrarecast.config.UserConfig
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.MinecraftClient
@@ -15,10 +16,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo
 class PlayerJumpCooldownMixin {
 
     @Shadow private var jumpingCooldown: Int = 0
-    private var isPlayer: Boolean = equals(MinecraftClient.getInstance().player)
+
+    private val enabled get() = UserConfig.Jumping.ENABLED.booleanValue
+    private val cooldown get() = UserConfig.Jumping.COOLDOWN.integerValue
+    private val player get() = MinecraftClient.getInstance().player
+
 
     @Inject(method = ["tickMovement"], at = [At("HEAD")])
     fun reduceCooldown(ci: CallbackInfo) {
-        if (isPlayer && jumpingCooldown > 2) jumpingCooldown = 2
+        if (enabled && (jumpingCooldown > cooldown) && equals(player)) {
+            jumpingCooldown = cooldown
+        }
     }
 }

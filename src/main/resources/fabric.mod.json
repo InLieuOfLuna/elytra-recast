@@ -14,7 +14,10 @@
   "environment": "*",
   "entrypoints": {
     "client": [ "me.lunaluna.fabric.elytrarecast.Startup"],
-    "main": []
+    "main": [],
+    "modmenu": [
+      "me.lunaluna.fabric.elytrarecast.modmenu.ModMenuImpl"
+    ]
   },
   "mixins": [
     "elytra-recast.mixins.json"

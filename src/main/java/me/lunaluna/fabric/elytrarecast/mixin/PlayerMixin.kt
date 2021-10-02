@@ -16,19 +16,26 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable
 @Environment(EnvType.CLIENT)
 abstract class PlayerMixin {
 
-    private val timer = Timer(UserConfig.Generic.RECAST_COOLDOWN::getIntegerValue)
+    private val timer = Timer { return@Timer cooldown() }
     private val player get() = MinecraftClient.getInstance().player
 
     private var previousElytra = false
 
     @Inject(method = ["isFallFlying"], at = [At("TAIL")], cancellable = true)
     fun recastIfLanded(cir: CallbackInfoReturnable<Boolean>) = timer.runOnCooldown {
-        if (UserConfig.Generic.ENABLED.booleanValue) {
+        if (enabled()) {
             val elytra = cir.returnValue
             if (previousElytra && !elytra) {
                 cir.returnValue = ElytraHelper.castElytra(player!!)
             }
             previousElytra = elytra
         }
+    }
+
+    private fun enabled(): Boolean {
+        return UserConfig.Recasting.ENABLED.booleanValue
+    }
+    private fun cooldown(): Int {
+        return UserConfig.Recasting.COOLDOWN.integerValue
     }
 }
