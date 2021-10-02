@@ -38,7 +38,7 @@ object UserConfig : IConfigHandler {
     }
 
     object Hotkeys {
-        val OPEN_CONFIG = ConfigHotkey("Open Config", "E,C", "Hotkey to open the config")
+        val OPEN_CONFIG = ConfigHotkey("Open Config", "R,C", "Hotkey to open the config")
         val TOGGLE_RECAST = ConfigHotkey("Toggle Recast", "", "Hotkey to toggle the automatic recasting")
         val TOGGLE_JUMP = ConfigHotkey("Toggle Jump", "", "Hotkey to toggle the jump cooldown reset")
 
