@@ -2,7 +2,6 @@ package me.lunaluna.fabric.elytrarecast
 
 class Timer(val getCooldown: () -> Int) {
 
-
     var previousTime: Long = 0L
     private val cooldown get() = getCooldown()
 

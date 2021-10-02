@@ -9,7 +9,6 @@ import me.lunaluna.fabric.elytrarecast.config.gui.GuiUserConfig
 import me.lunaluna.fabric.elytrarecast.hotkeys.InputHandler
 import net.fabricmc.api.ClientModInitializer
 
-
 class Startup : ClientModInitializer {
     override fun onInitializeClient() = InitializationHandler.getInstance().registerInitializationHandler {
         ConfigManager.getInstance().registerConfigHandler(Reference.MOD_ID, UserConfig)
