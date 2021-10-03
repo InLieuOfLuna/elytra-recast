@@ -55,7 +55,8 @@ object UserConfig : IConfigHandler {
             val element: JsonElement? = JsonUtils.parseJsonFile(configFile)
             if (element != null && element.isJsonObject) {
                 val root = element.asJsonObject
-                ConfigUtils.readConfigBase(root, "Generic", Recasting.OPTIONS)
+                ConfigUtils.readConfigBase(root, "Recasting", Recasting.OPTIONS)
+                ConfigUtils.readConfigBase(root, "Jumping", Recasting.OPTIONS)
                 ConfigUtils.readConfigBase(root, "Hotkeys", Hotkeys.OPTIONS)
             }
         }
@@ -65,7 +66,8 @@ object UserConfig : IConfigHandler {
         val dir: File = FileUtils.getConfigDirectory()
         if (dir.exists() && dir.isDirectory || dir.mkdirs()) {
             val root = JsonObject()
-            ConfigUtils.writeConfigBase(root, "Generic", Recasting.OPTIONS)
+            ConfigUtils.writeConfigBase(root, "Recasting", Recasting.OPTIONS)
+            ConfigUtils.writeConfigBase(root, "Jumping", Recasting.OPTIONS)
             ConfigUtils.writeConfigBase(root, "Hotkeys", Hotkeys.OPTIONS)
             JsonUtils.writeJsonToFile(root, File(dir, CONFIG_FILE_NAME))
         }
