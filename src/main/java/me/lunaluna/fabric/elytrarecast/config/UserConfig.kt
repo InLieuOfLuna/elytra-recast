@@ -8,6 +8,7 @@ import fi.dy.masa.malilib.config.IConfigHandler
 import fi.dy.masa.malilib.config.options.ConfigBoolean
 import fi.dy.masa.malilib.config.options.ConfigHotkey
 import fi.dy.masa.malilib.config.options.ConfigInteger
+import fi.dy.masa.malilib.hotkeys.IHotkey
 import fi.dy.masa.malilib.util.FileUtils
 import fi.dy.masa.malilib.util.JsonUtils
 import me.lunaluna.fabric.elytrarecast.Reference
@@ -37,16 +38,10 @@ object UserConfig : IConfigHandler {
         )
     }
 
-    object Hotkeys {
-        val OPEN_CONFIG = ConfigHotkey("Open Config", "R,C", "Hotkey to open the config")
-        val TOGGLE_RECAST = ConfigHotkey("Toggle Recast", "", "Hotkey to toggle the automatic recasting")
-        val TOGGLE_JUMP = ConfigHotkey("Toggle Jump", "", "Hotkey to toggle the jump cooldown reset")
-
-        val OPTIONS = listOf<IConfigBase>(
-            OPEN_CONFIG,
-            TOGGLE_RECAST,
-            TOGGLE_JUMP
-        )
+    enum class Hotkey(base: IHotkey) : IHotkey by base {
+        OPEN_CONFIG(ConfigHotkey("Open Config", "R,C", "Hotkey to open the config")),
+        TOGGLE_RECAST(ConfigHotkey("Toggle Recast", "", "Hotkey to toggle the automatic recasting")),
+        TOGGLE_JUMP(ConfigHotkey("Toggle Jump", "", "Hotkey to toggle the jump cooldown reset"));
     }
 
     override fun load() {
@@ -57,7 +52,7 @@ object UserConfig : IConfigHandler {
                 val root = element.asJsonObject
                 ConfigUtils.readConfigBase(root, "Recasting", Recasting.OPTIONS)
                 ConfigUtils.readConfigBase(root, "Jumping", Recasting.OPTIONS)
-                ConfigUtils.readConfigBase(root, "Hotkeys", Hotkeys.OPTIONS)
+                ConfigUtils.readConfigBase(root, "Hotkeys", Hotkey.values().toMutableList())
             }
         }
     }
@@ -68,7 +63,7 @@ object UserConfig : IConfigHandler {
             val root = JsonObject()
             ConfigUtils.writeConfigBase(root, "Recasting", Recasting.OPTIONS)
             ConfigUtils.writeConfigBase(root, "Jumping", Recasting.OPTIONS)
-            ConfigUtils.writeConfigBase(root, "Hotkeys", Hotkeys.OPTIONS)
+            ConfigUtils.writeConfigBase(root, "Hotkeys", Hotkey.values().toMutableList())
             JsonUtils.writeJsonToFile(root, File(dir, CONFIG_FILE_NAME))
         }
     }

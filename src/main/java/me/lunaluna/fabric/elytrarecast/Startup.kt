@@ -14,15 +14,15 @@ class Startup : ClientModInitializer {
         ConfigManager.getInstance().registerConfigHandler(Reference.MOD_ID, UserConfig)
         InputEventHandler.getKeybindManager().registerKeybindProvider(InputHandler)
 
-        UserConfig.Hotkeys.OPEN_CONFIG.keybind.setCallback { _, _ ->
+        UserConfig.Hotkey.OPEN_CONFIG.keybind.setCallback { _, _ ->
             GuiBase.openGui(GuiUserConfig())
             true
         }
-        UserConfig.Hotkeys.TOGGLE_RECAST.keybind.setCallback { _, _ ->
+        UserConfig.Hotkey.TOGGLE_RECAST.keybind.setCallback { _, _ ->
             UserConfig.Recasting.ENABLED.booleanValue = !UserConfig.Recasting.ENABLED.booleanValue
             true
         }
-        UserConfig.Hotkeys.TOGGLE_JUMP.keybind.setCallback { _, _ ->
+        UserConfig.Hotkey.TOGGLE_JUMP.keybind.setCallback { _, _ ->
             UserConfig.Jumping.ENABLED.booleanValue = !UserConfig.Jumping.ENABLED.booleanValue
             true
         }

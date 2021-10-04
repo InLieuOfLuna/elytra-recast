@@ -20,7 +20,7 @@
     "elytra-recast.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.7",
+    "fabricloader": ">=0.11.6",
     "malilib": "*",
     "minecraft": "1.17.1"
   }

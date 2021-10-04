@@ -32,12 +32,11 @@ class GuiUserConfig : GuiConfigsBase(10, 50, Reference.MOD_ID, null, TITLE_KEY) 
 
     override fun useKeybindSearch() = tab === ConfigGuiTab.HOTKEYS
 
-
     override fun getConfigs(): List<ConfigOptionWrapper?>? {
         val configs = when (tab) {
             ConfigGuiTab.RECASTING -> UserConfig.Recasting.OPTIONS
             ConfigGuiTab.JUMPING -> UserConfig.Jumping.OPTIONS
-            ConfigGuiTab.HOTKEYS -> UserConfig.Hotkeys.OPTIONS
+            ConfigGuiTab.HOTKEYS -> UserConfig.Hotkey.values().toMutableList()
         }
         return ConfigOptionWrapper.createFor(configs)
     }
@@ -45,7 +44,6 @@ class GuiUserConfig : GuiConfigsBase(10, 50, Reference.MOD_ID, null, TITLE_KEY) 
     private class ButtonListener(private val tab: ConfigGuiTab, private val parent: GuiUserConfig) : IButtonActionListener {
         override fun actionPerformedWithButton(button: ButtonBase, mouseButton: Int) {
             GuiUserConfig.tab = tab
-
             parent.reCreateListWidget()
             parent.listWidget?.resetScrollbarPosition()
             parent.initGui()
