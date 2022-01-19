@@ -30,11 +30,10 @@ abstract class PlayerMixin {
             if (enabled()) {
                 boolean elytra = cir.getReturnValue();
                 if (previousElytra && !elytra) {
-                    cir.setReturnValue(ElytraHelper.INSTANCE.castElytra(player()));
+                    cir.setReturnValue(ElytraHelper.castElytra(player()));
                 }
                 previousElytra = elytra;
             }
-            return Unit.INSTANCE;
         });
     }
 
