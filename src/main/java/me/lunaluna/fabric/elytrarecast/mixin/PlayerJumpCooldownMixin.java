@@ -19,10 +19,10 @@ public class PlayerJumpCooldownMixin {
     @Shadow private int jumpingCooldown;
 
     private boolean enabled() {
-        return UserConfig.Jumping.INSTANCE.getENABLED().getBooleanValue();
+        return UserConfig.Jumping.ENABLED.getBooleanValue();
     }
     private int cooldown() {
-      return UserConfig.Jumping.INSTANCE.getCOOLDOWN().getIntegerValue();
+      return UserConfig.Jumping.COOLDOWN.getIntegerValue();
     }
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;

@@ -39,9 +39,9 @@ abstract class PlayerMixin {
     }
 
     private boolean enabled() {
-        return UserConfig.Recasting.INSTANCE.getENABLED().getBooleanValue();
+        return UserConfig.Recasting.ENABLED.getBooleanValue();
     }
     private int cooldown() {
-        return UserConfig.Recasting.INSTANCE.getCOOLDOWN().getIntegerValue();
+        return UserConfig.Recasting.COOLDOWN.getIntegerValue();
     }
 }

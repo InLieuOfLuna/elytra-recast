@@ -36,7 +36,7 @@ class GuiUserConfig : GuiConfigsBase(10, 50, Reference.MOD_ID, null, TITLE_KEY) 
         val configs = when (tab) {
             ConfigGuiTab.RECASTING -> UserConfig.Recasting.OPTIONS
             ConfigGuiTab.JUMPING -> UserConfig.Jumping.OPTIONS
-            ConfigGuiTab.HOTKEYS -> UserConfig.Hotkey.values().toMutableList()
+            ConfigGuiTab.HOTKEYS -> UserConfig.Hotkey.OPTIONS
         }
         return ConfigOptionWrapper.createFor(configs)
     }
