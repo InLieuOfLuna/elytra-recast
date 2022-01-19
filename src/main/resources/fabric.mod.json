@@ -14,7 +14,7 @@
   "environment": "*",
   "entrypoints": {
     "client": [ "me.lunaluna.fabric.elytrarecast.Startup"],
-    "modmenu": [ "me.lunaluna.fabric.elytrarecast.modmenu.ModMenuImpl" ]
+    "modmenu": [ "me.lunaluna.fabric.elytrarecast.modmenu.ModMenuIpml" ]
   },
   "mixins": [
     "elytra-recast.mixins.json"
@@ -22,6 +22,6 @@
   "depends": {
     "fabricloader": ">=0.11.6",
     "malilib": "*",
-    "minecraft": "1.17.1"
+    "minecraft": "1.18"
   }
 }
