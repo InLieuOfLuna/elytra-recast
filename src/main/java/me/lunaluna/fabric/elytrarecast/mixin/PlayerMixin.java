@@ -2,6 +2,7 @@ package me.lunaluna.fabric.elytrarecast.mixin;
 
 import me.lunaluna.fabric.elytrarecast.ElytraHelper;
 import me.lunaluna.fabric.elytrarecast.Timer;
+import me.lunaluna.fabric.elytrarecast.config.Config;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 abstract class PlayerMixin {
 
-    private final Timer timer = new Timer(this::cooldown);
+    private final Timer timer = new Timer(Config::getCooldown);
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;
     }
@@ -25,7 +26,7 @@ abstract class PlayerMixin {
     @Inject(method = "isFallFlying", at = @At("TAIL"), cancellable = true)
     public void recastIfLanded(CallbackInfoReturnable<Boolean> cir) {
         timer.runOnCooldown(() -> {
-            if (enabled()) {
+            if (Config.isEnabled()) {
                 boolean elytra = cir.getReturnValue();
                 if (previousElytra && !elytra) {
                     cir.setReturnValue(ElytraHelper.castElytra(player()));
@@ -33,12 +34,5 @@ abstract class PlayerMixin {
                 previousElytra = elytra;
             }
         });
-    }
-
-    private boolean enabled() {
-        return true;
-    }
-    private int cooldown() {
-        return 3;
     }
 }
