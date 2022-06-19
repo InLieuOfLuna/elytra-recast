@@ -1,9 +1,7 @@
 package me.lunaluna.fabric.elytrarecast.mixin;
 
-import kotlin.Unit;
 import me.lunaluna.fabric.elytrarecast.ElytraHelper;
 import me.lunaluna.fabric.elytrarecast.Timer;
-import me.lunaluna.fabric.elytrarecast.config.UserConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -38,9 +36,9 @@ abstract class PlayerMixin {
     }
 
     private boolean enabled() {
-        return UserConfig.Recasting.ENABLED.getBooleanValue();
+        return true;
     }
     private int cooldown() {
-        return UserConfig.Recasting.COOLDOWN.getIntegerValue();
+        return 3;
     }
 }

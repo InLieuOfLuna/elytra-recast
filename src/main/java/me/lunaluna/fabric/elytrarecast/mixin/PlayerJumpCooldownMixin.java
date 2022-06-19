@@ -1,6 +1,5 @@
 package me.lunaluna.fabric.elytrarecast.mixin;
 
-import me.lunaluna.fabric.elytrarecast.config.UserConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -19,10 +18,10 @@ public class PlayerJumpCooldownMixin {
     @Shadow private int jumpingCooldown;
 
     private boolean enabled() {
-        return UserConfig.Jumping.ENABLED.getBooleanValue();
+        return true;
     }
     private int cooldown() {
-      return UserConfig.Jumping.COOLDOWN.getIntegerValue();
+      return 3;
     }
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;
