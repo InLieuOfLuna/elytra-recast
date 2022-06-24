@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class ClothConfigScreen {
     public static Screen createScreen(Screen parent) {
-
         ConfigBuilder configBuilder = ConfigBuilder.create();
 
         configBuilder.setTitle(translate("title.elytra-recast.config"));
@@ -29,31 +28,23 @@ public class ClothConfigScreen {
         ConfigCategory jumping = configBuilder.getOrCreateCategory(Text.of("jumping.elytra-recast.config"));
         elytra.addEntry(
                 entryBuilder.startIntField(translate("cooldown.elytra.elytra-cast.config"), Startup.config.getCooldown())
-                        .setSaveConsumer((cooldown) -> {
-                            Startup.config.setCooldown(cooldown);
-                        })
+                        .setSaveConsumer(Startup.config::setCooldown)
                         .build()
         );
         elytra.addEntry(
                 entryBuilder.startBooleanToggle(translate("enabled.elytra.elytra-cast.config"), Startup.config.isEnabled())
-                        .setSaveConsumer((enabled) -> {
-                            Startup.config.setEnabled(enabled);
-                        })
+                        .setSaveConsumer(Startup.config::setEnabled)
                         .build()
         );
 
         jumping.addEntry(
                 entryBuilder.startIntField(translate("cooldown.jumping.elytra-cast.config"), Startup.config.getJumpCooldown())
-                        .setSaveConsumer((jumpCooldown) -> {
-                            Startup.config.setJumpCooldown(jumpCooldown);
-                        })
+                        .setSaveConsumer(Startup.config::setJumpCooldown)
                         .build()
         );
         jumping.addEntry(
                 entryBuilder.startBooleanToggle(translate("enabled.jumping.elytra-cast.config"), Startup.config.isJumpEnabled())
-                        .setSaveConsumer((enabled) -> {
-                            Startup.config.setJumpEnabled(enabled);
-                        })
+                        .setSaveConsumer(Startup.config::setJumpEnabled)
                         .build()
         );
 

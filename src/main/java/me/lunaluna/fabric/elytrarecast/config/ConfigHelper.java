@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class ConfigHelper {
-
     public static Config getOrCreate(Path filePath) throws IOException {
         File file = filePath.toFile();
 
@@ -28,13 +27,18 @@ public class ConfigHelper {
     }
 
     public static void write(Config config, Path filePath) throws IOException {
+        File file = prepareFile(filePath);
+        try (FileWriter writer = new FileWriter(file)) {
+            new Gson().toJson(config, Config.class, writer);
+        }
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private static File prepareFile(Path filePath) throws IOException {
         File file = filePath.toFile();
         file.getParentFile().mkdirs();
         file.createNewFile();
-        Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(file)) {
-            gson.toJson(config, Config.class, writer);
-        }
+        return file;
     }
 
     public static Config getDefault() {
