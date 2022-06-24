@@ -1,7 +1,6 @@
 package me.lunaluna.fabric.elytrarecast.mixin;
 
 import me.lunaluna.fabric.elytrarecast.Startup;
-import me.lunaluna.fabric.elytrarecast.config.Config;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -23,6 +22,7 @@ public class PlayerJumpCooldownMixin {
         return MinecraftClient.getInstance().player;
     }
 
+    @SuppressWarnings("EqualsBetweenInconvertibleTypes")
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void reduceCooldown(CallbackInfo ci) {
         if (Startup.config.isJumpEnabled() && (jumpingCooldown > Startup.config.getJumpCooldown()) && equals(player())) {
