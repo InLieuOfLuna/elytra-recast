@@ -12,42 +12,10 @@ public class Startup implements ClientModInitializer {
     public static Path configPath = Path.of("config", "elytra-recast.json");
     @Override
     public void onInitializeClient() {
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
         try {
             config = ConfigHelper.getOrCreate(configPath);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
-        System.out.println("HELLO WORLD");
     }
 }
