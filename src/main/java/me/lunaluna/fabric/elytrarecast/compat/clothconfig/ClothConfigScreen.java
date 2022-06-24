@@ -32,7 +32,7 @@ public class ClothConfigScreen {
                         .build()
         );
         elytra.addEntry(
-                entryBuilder.startBooleanToggle(translate("enabled.elytra.elytra-cast.config"), Startup.config.isEnabled())
+                entryBuilder.startBooleanToggle(translate("enabled.elytra.elytra-cast.config"), Startup.config.getEnabled())
                         .setSaveConsumer(Startup.config::setEnabled)
                         .build()
         );
@@ -43,7 +43,7 @@ public class ClothConfigScreen {
                         .build()
         );
         jumping.addEntry(
-                entryBuilder.startBooleanToggle(translate("enabled.jumping.elytra-cast.config"), Startup.config.isJumpEnabled())
+                entryBuilder.startBooleanToggle(translate("enabled.jumping.elytra-cast.config"), Startup.config.getJumpEnabled())
                         .setSaveConsumer(Startup.config::setJumpEnabled)
                         .build()
         );

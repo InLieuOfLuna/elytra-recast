@@ -25,7 +25,7 @@ public class PlayerJumpCooldownMixin {
     @SuppressWarnings("EqualsBetweenInconvertibleTypes")
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void reduceCooldown(CallbackInfo ci) {
-        if (Startup.config.isJumpEnabled() && (jumpingCooldown > Startup.config.getJumpCooldown()) && equals(player())) {
+        if (Startup.config.getJumpEnabled() && (jumpingCooldown > Startup.config.getJumpCooldown()) && equals(player())) {
             jumpingCooldown = Startup.config.getJumpCooldown();
         }
     }

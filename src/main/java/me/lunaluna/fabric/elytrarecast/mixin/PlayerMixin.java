@@ -26,7 +26,7 @@ abstract class PlayerMixin {
     @Inject(method = "isFallFlying", at = @At("TAIL"), cancellable = true)
     public void recastIfLanded(CallbackInfoReturnable<Boolean> cir) {
         timer.runOnCooldown(() -> {
-            if (Startup.config.isEnabled()) {
+            if (Startup.config.getEnabled()) {
                 boolean elytra = cir.getReturnValue();
                 if (previousElytra && !elytra) {
                     cir.setReturnValue(ElytraHelper.castElytra(player()));

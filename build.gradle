@@ -1,4 +1,5 @@
 plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.7.0'
     id 'fabric-loom' version '0.12-SNAPSHOT'
     id 'maven-publish'
 }
@@ -7,12 +8,8 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    maven {
-        url 'https://maven.terraformersmc.com/releases/'
-    }
-    maven {
-        url 'https://maven.shedaniel.me/'
-    }
+    maven { url 'https://maven.terraformersmc.com/releases/' }
+    maven { url 'https://maven.shedaniel.me/' }
 }
 
 dependencies {
@@ -30,12 +27,8 @@ dependencies {
     // Gson
     implementation "com.google.code.gson:gson:${project.gson_version}"
 
-    // Project Lombok
-    compileOnly "org.projectlombok:lombok:${project.lombok_version}"
-    annotationProcessor "org.projectlombok:lombok:${project.lombok_version}"
-
-    testCompileOnly "org.projectlombok:lombok:${project.lombok_version}"
-    testAnnotationProcessor "org.projectlombok:lombok:${project.lombok_version}"
+    // Kotlin
+    modImplementation(group = "net.fabricmc:fabric-language-kotlin:${project.kotlin_mod_version}+kotlin.${project.kotlin_version}")
 }
 
 processResources {
