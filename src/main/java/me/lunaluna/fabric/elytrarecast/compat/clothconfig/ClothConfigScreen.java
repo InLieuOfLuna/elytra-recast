@@ -24,8 +24,8 @@ public class ClothConfigScreen {
                 }
         );
         ConfigEntryBuilder entryBuilder = configBuilder.entryBuilder();
-        ConfigCategory elytra = configBuilder.getOrCreateCategory(Text.of("elytra.elytra-recast.config"));
-        ConfigCategory jumping = configBuilder.getOrCreateCategory(Text.of("jumping.elytra-recast.config"));
+        ConfigCategory elytra = configBuilder.getOrCreateCategory(translate("elytra.elytra-recast.config"));
+        ConfigCategory jumping = configBuilder.getOrCreateCategory(translate("jumping.elytra-recast.config"));
         elytra.addEntry(
                 entryBuilder.startIntField(translate("cooldown.elytra.elytra-cast.config"), Startup.config.getCooldown())
                         .setSaveConsumer(Startup.config::setCooldown)
