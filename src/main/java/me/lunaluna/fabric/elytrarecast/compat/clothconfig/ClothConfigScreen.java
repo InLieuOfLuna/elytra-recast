@@ -7,7 +7,6 @@ import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 
 import java.io.IOException;
 
@@ -19,7 +18,6 @@ public class ClothConfigScreen {
         configBuilder.setTitle(translate("title.elytra-recast.config"));
         configBuilder.setSavingRunnable(() -> {
                     try {
-                        System.out.println(Startup.config);
                         ConfigHelper.write(Startup.config, Startup.configPath);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -63,6 +61,6 @@ public class ClothConfigScreen {
     }
 
     private static Text translate(String key) {
-        return new TranslatableText(key);
+        return Text.translatable(key);
     }
 }

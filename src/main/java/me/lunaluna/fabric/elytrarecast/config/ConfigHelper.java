@@ -13,7 +13,11 @@ public class ConfigHelper {
     public static Config getOrCreate(Path filePath) throws IOException {
         File file = filePath.toFile();
 
-        Config result = new Gson().fromJson(new FileReader(file), Config.class);
+        Config result = null;
+
+        try {
+            result = new Gson().fromJson(new FileReader(file), Config.class);
+        } catch (Exception ignored) {  }
 
         if (result == null) {
             result = getDefault();
@@ -25,6 +29,7 @@ public class ConfigHelper {
 
     public static void write(Config config, Path filePath) throws IOException {
         File file = filePath.toFile();
+        file.getParentFile().mkdirs();
         file.createNewFile();
         Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(file)) {
