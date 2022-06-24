@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Config {
-    public boolean enabled;
-    public int cooldown;
-    public boolean jumpEnabled;
-    public int jumpCooldown;
+    private boolean enabled;
+    private int cooldown;
+    private boolean jumpEnabled;
+    private int jumpCooldown;
 }

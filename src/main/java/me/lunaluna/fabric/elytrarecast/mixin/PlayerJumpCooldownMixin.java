@@ -25,8 +25,8 @@ public class PlayerJumpCooldownMixin {
 
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void reduceCooldown(CallbackInfo ci) {
-        if (Startup.config.jumpEnabled && (jumpingCooldown > Startup.config.jumpCooldown) && equals(player())) {
-            jumpingCooldown = Startup.config.jumpCooldown;
+        if (Startup.config.isJumpEnabled() && (jumpingCooldown > Startup.config.getJumpCooldown()) && equals(player())) {
+            jumpingCooldown = Startup.config.getJumpCooldown();
         }
     }
 
