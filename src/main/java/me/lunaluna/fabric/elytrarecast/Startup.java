@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 public class Startup implements ClientModInitializer {
     public static Config config;
-    public static Path configPath = Path.of("config", "elytra-recast.json");
+    public static final Path configPath = Path.of("config", "elytra-recast.json");
     @Override
     public void onInitializeClient() {
         try {
