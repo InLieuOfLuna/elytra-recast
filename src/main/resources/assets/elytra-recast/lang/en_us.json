@@ -1,6 +1,9 @@
 {
-  "elytra-recast.gui.title.config": "Config",
-  "elytra-recast.gui.title.config.recasting": "Recasting",
-  "elytra-recast.gui.title.config.jumping": "Jumping",
-  "elytra-recast.gui.title.config.hotkeys": "Hotkeys"
+  "title.elytra-recast.config": "Config",
+  "elytra.elytra-recast.config": "Recasting",
+  "jumping.elytra-recast.config": "Jumping",
+  "cooldown.elytra.elytra-cast.config": "Cooldown",
+  "enabled.elytra.elytra-cast.config": "Enabled",
+  "cooldown.jumping.elytra-cast.config": "Cooldown",
+  "enabled.jumping.elytra-cast.config": "Enabled"
 }
