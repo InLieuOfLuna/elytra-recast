@@ -26,3 +26,8 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Archive jars
+      uses: actions/upload-artifact@v2
+      with:
+        name: fabric
+        path: build/libs/*.jar
