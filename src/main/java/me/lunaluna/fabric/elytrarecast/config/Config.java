@@ -1,21 +1,13 @@
 package me.lunaluna.fabric.elytrarecast.config;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Config {
-
-    public static boolean isEnabled() {
-        return true;
-    }
-
-    public static int getCooldown() {
-        return 3;
-    }
-
-    public static boolean isJumpEnabled() {
-        return true;
-    }
-
-    public static int getJumpCooldown() {
-        return 3;
-    }
-
+    public boolean enabled;
+    public int cooldown;
+    public boolean jumpEnabled;
+    public int jumpCooldown;
 }

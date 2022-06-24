@@ -1,5 +1,6 @@
 package me.lunaluna.fabric.elytrarecast.mixin;
 
+import me.lunaluna.fabric.elytrarecast.Startup;
 import me.lunaluna.fabric.elytrarecast.config.Config;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -24,8 +25,8 @@ public class PlayerJumpCooldownMixin {
 
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void reduceCooldown(CallbackInfo ci) {
-        if (Config.isJumpEnabled() && (jumpingCooldown > Config.getJumpCooldown()) && equals(player())) {
-            jumpingCooldown = Config.getJumpCooldown();
+        if (Startup.config.jumpEnabled && (jumpingCooldown > Startup.config.jumpCooldown) && equals(player())) {
+            jumpingCooldown = Startup.config.jumpCooldown;
         }
     }
 
