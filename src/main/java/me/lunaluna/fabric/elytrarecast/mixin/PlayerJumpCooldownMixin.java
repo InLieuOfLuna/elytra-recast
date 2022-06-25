@@ -17,7 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerJumpCooldownMixin {
 
     @Shadow private int jumpingCooldown;
-
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;
     }
@@ -25,6 +24,7 @@ public class PlayerJumpCooldownMixin {
     @SuppressWarnings("EqualsBetweenInconvertibleTypes")
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void reduceCooldown(CallbackInfo ci) {
+        if (!MinecraftClient.getInstance().isInSingleplayer()) return;
         if (Startup.config.getJumpEnabled() && (jumpingCooldown > Startup.config.getJumpCooldown()) && equals(player())) {
             jumpingCooldown = Startup.config.getJumpCooldown();
         }

@@ -25,6 +25,7 @@ abstract class PlayerMixin {
 
     @Inject(method = "isFallFlying", at = @At("TAIL"), cancellable = true)
     public void recastIfLanded(CallbackInfoReturnable<Boolean> cir) {
+        if (!MinecraftClient.getInstance().isInSingleplayer()) return;
         timer.runOnCooldown(() -> {
             if (Startup.config.getEnabled()) {
                 boolean elytra = cir.getReturnValue();
