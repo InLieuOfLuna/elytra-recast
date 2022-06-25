@@ -28,7 +28,7 @@ dependencies {
     implementation "com.google.code.gson:gson:${project.gson_version}"
 
     // Kotlin
-    modImplementation(group = "net.fabricmc:fabric-language-kotlin:${project.kotlin_mod_version}+kotlin.${project.kotlin_version}")
+    modImplementation "net.fabricmc:fabric-language-kotlin:${project.kotlin_mod_version}+kotlin.${project.kotlin_version}"
 }
 
 processResources {
