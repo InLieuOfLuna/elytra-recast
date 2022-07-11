@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 abstract class PlayerMixin {
 
-    private final Timer timer = new Timer(() -> Startup.config.getCooldown());
+    private final Timer timer = new Timer(Startup.config::getCooldown);
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;
     }
