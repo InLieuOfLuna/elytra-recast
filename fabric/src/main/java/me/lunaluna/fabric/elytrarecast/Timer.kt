@@ -2,7 +2,7 @@ package me.lunaluna.fabric.elytrarecast
 
 import java.util.function.Supplier
 
-class Timer(val getCooldown: Supplier<Int>) {
+class Timer(private val getCooldown: Supplier<Int>) {
     private var previousTime = 0L
 
     fun runOnCooldown(runnable: Runnable) {
