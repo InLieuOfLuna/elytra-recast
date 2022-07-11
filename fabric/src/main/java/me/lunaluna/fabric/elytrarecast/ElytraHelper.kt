@@ -23,7 +23,6 @@ object ElytraHelper {
         } else false
     }
 
-
     private fun checkFallFlyingIgnoreGround(player: ClientPlayerEntity): Boolean {
         return if (!player.isTouchingWater && !player.hasStatusEffect(StatusEffects.LEVITATION)) {
             val itemStack = player.getEquippedStack(EquipmentSlot.CHEST)

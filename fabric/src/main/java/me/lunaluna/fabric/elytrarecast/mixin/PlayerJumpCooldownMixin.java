@@ -29,5 +29,4 @@ public class PlayerJumpCooldownMixin {
             jumpingCooldown = Startup.INSTANCE.getConfig().getJumpCooldown();
         }
     }
-
 }
