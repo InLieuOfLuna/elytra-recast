@@ -30,7 +30,7 @@ abstract class PlayerMixin {
             if (Startup.config.getEnabled()) {
                 boolean elytra = cir.getReturnValue();
                 if (previousElytra && !elytra) {
-                    cir.setReturnValue(ElytraHelper.castElytra(player()));
+                    cir.setReturnValue(ElytraHelper.INSTANCE.castElytra(player()));
                 }
                 previousElytra = elytra;
             }
