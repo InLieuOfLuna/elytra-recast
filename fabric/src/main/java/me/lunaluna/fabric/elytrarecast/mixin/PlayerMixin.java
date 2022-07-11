@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 abstract class PlayerMixin {
 
-    private final Timer timer = new Timer(Startup.config::getCooldown);
+    private final Timer timer = new Timer(Startup.INSTANCE.getConfig()::getCooldown);
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;
     }
@@ -27,7 +27,7 @@ abstract class PlayerMixin {
     public void recastIfLanded(CallbackInfoReturnable<Boolean> cir) {
         if (!MinecraftClient.getInstance().isInSingleplayer()) return;
         timer.runOnCooldown(() -> {
-            if (Startup.config.getEnabled()) {
+            if (Startup.INSTANCE.getConfig().getEnabled()) {
                 boolean elytra = cir.getReturnValue();
                 if (previousElytra && !elytra) {
                     cir.setReturnValue(ElytraHelper.INSTANCE.castElytra(player()));

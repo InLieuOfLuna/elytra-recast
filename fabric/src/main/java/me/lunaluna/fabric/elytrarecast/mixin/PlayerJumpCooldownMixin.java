@@ -25,8 +25,8 @@ public class PlayerJumpCooldownMixin {
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void reduceCooldown(CallbackInfo ci) {
         if (!MinecraftClient.getInstance().isInSingleplayer()) return;
-        if (Startup.config.getJumpEnabled() && (jumpingCooldown > Startup.config.getJumpCooldown()) && equals(player())) {
-            jumpingCooldown = Startup.config.getJumpCooldown();
+        if (Startup.INSTANCE.getConfig().getJumpEnabled() && (jumpingCooldown > Startup.INSTANCE.getConfig().getJumpCooldown()) && equals(player())) {
+            jumpingCooldown = Startup.INSTANCE.getConfig().getJumpCooldown();
         }
     }
 
