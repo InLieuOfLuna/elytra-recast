@@ -29,4 +29,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: fabric
-        path: build/libs/*.jar
+        path: fabric/build/libs/*.jar
