@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "icon": "assets/elytra-recast/icon.png",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "client": [
       {
@@ -29,7 +29,7 @@
   "depends": {
     "fabricloader": ">=0.13.3",
     "minecraft": "1.19",
-    "cloth-config": "7.0.72",
+    "cloth-config": ">=7.0.72",
     "fabric-language-kotlin": ">=1.8.0+kotlin.1.7.0"
   }
 }
