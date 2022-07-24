@@ -34,6 +34,6 @@ dependencies {
 
 processResources {
     filesMatching("fabric.mod.json") {
-        expand "mod_version": version
+        expand properties
     }
 }

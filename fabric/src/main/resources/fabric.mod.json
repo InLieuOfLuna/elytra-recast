@@ -27,9 +27,9 @@
     "elytra-recast.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13.3",
-    "minecraft": "1.19",
-    "cloth-config": ">=7.0.72",
-    "fabric-language-kotlin": ">=1.8.0+kotlin.1.7.0"
+    "minecraft": "${{minecraft_version}}",
+    "fabricloader": ">=${{loader_version}}",
+    "cloth-config": ">=${{cloth_config_version}}",
+    "fabric-language-kotlin": ">=${{kotlin_mod_version}}+kotlin.${{kotlin_version}}"
   }
 }
