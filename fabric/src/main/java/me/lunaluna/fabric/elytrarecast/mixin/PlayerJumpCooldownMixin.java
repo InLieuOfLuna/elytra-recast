@@ -24,7 +24,6 @@ public class PlayerJumpCooldownMixin {
     @SuppressWarnings("EqualsBetweenInconvertibleTypes")
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void reduceCooldown(CallbackInfo ci) {
-        if (!MinecraftClient.getInstance().isInSingleplayer()) return;
         if (Startup.INSTANCE.getConfig().getJumpEnabled() && (jumpingCooldown > Startup.INSTANCE.getConfig().getJumpCooldown()) && equals(player())) {
             jumpingCooldown = Startup.INSTANCE.getConfig().getJumpCooldown();
         }
