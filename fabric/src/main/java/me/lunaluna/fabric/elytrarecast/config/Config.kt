@@ -5,8 +5,8 @@ import me.shedaniel.autoconfig.annotation.Config
 
 @Config(name = "elytra-recast")
 data class Config(
-    var enabled: Boolean = false,
-    var cooldown: Int = 0,
-    var jumpEnabled: Boolean = false,
-    var jumpCooldown: Int = 0
+    var enabled: Boolean = true,
+    var cooldown: Int = 4,
+    var jumpEnabled: Boolean = true,
+    var jumpCooldown: Int = 2
 ) : ConfigData
