@@ -6,6 +6,10 @@ plugins {
 group 'me.lunaluna.elytra-recast'
 version mod_version
 
+kotlin {
+    jvmToolchain(17)
+}
+
 repositories {
     maven { url 'https://maven.terraformersmc.com/releases/' }
     maven { url 'https://maven.shedaniel.me/' }
