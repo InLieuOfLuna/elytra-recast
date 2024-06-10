@@ -26,7 +26,7 @@ jobs:
       with:
         arguments: build
     - name: Archive jars
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: fabric
         path: fabric/build/libs/*.jar
