@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.5-SNAPSHOT'
+    id 'fabric-loom' version '1.7.2'
     id "org.jetbrains.kotlin.jvm" version "$kotlin_version"
 }
 
@@ -7,7 +7,7 @@ group 'me.lunaluna.elytra-recast'
 version mod_version
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
 repositories {
