@@ -23,12 +23,6 @@ public class ElytraRecastConfigScreen {
 				.setDefaultValue(ElytraRecastConfig.DEFAULT_ENABLED)
 				.setSaveConsumer((replace) -> ElytraRecastConfig.enabled = replace)
 				.build());
-		// Cooldown value
-		general.addEntry(entryBuilder
-				.startIntField(Text.translatable("text.autoconfig.elytra-recast.option.cooldown"),
-						ElytraRecastConfig.cooldown)
-				.setDefaultValue(ElytraRecastConfig.DEFAULT_COOLDOWN)
-				.setSaveConsumer((replace) -> ElytraRecastConfig.cooldown = replace).build());
 		// Jump Enabled
 		general.addEntry(entryBuilder
 				.startBooleanToggle(

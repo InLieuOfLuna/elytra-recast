@@ -24,7 +24,6 @@ public class ElytraRecastConfig {
 	public static boolean enabled = true;
 	public static boolean jumpEnabled = true;
 
-	public static int cooldown = 4;
 	public static int jumpCooldown = 2;
 
 	public static void save() {
@@ -32,7 +31,6 @@ public class ElytraRecastConfig {
 
 		JsonObject jsonObject = new JsonObject();
 		jsonObject.addProperty("enabled", enabled);
-		jsonObject.addProperty("cooldown", cooldown);
 		jsonObject.addProperty("jumpEnabled", jumpEnabled);
 		jsonObject.addProperty("jumpCooldown", jumpCooldown);
 
@@ -52,8 +50,6 @@ public class ElytraRecastConfig {
 			JsonObject objectFromFile = JsonParser.parseReader(reader).getAsJsonObject();
 			if (objectFromFile.has("enabled"))
 				enabled = objectFromFile.get("enabled").getAsBoolean();
-			if (objectFromFile.has("cooldown"))
-				cooldown = objectFromFile.get("cooldown").getAsInt();
 			if (objectFromFile.has("jumpEnabled"))
 				jumpEnabled = objectFromFile.get("jumpEnabled").getAsBoolean();
 			if (objectFromFile.has("jumpCooldown"))

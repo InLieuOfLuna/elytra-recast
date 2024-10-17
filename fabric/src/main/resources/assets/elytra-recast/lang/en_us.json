@@ -1,7 +1,6 @@
 {
   "text.autoconfig.elytra-recast.title": "Elytra Recast",
   "text.autoconfig.elytra-recast.option.enabled": "Enable elytra recast",
-  "text.autoconfig.elytra-recast.option.cooldown": "Elytra recast cooldown (ms)",
   "text.autoconfig.elytra-recast.option.jumpEnabled": "Enable jump cooldown reduction",
   "text.autoconfig.elytra-recast.option.jumpCooldown": "Jump Cooldown (ticks)"
 }
