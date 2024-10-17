@@ -29,7 +29,10 @@
   "depends": {
     "minecraft": "~${minecraft_version}",
     "fabricloader": ">=${loader_version}",
-    "cloth-config": ">=${cloth_config_version}",
     "fabric-language-kotlin": ">=${kotlin_mod_version}+kotlin.${kotlin_version}"
+  },
+  "suggests": {
+    "cloth-config": ">=${cloth_config_version}",
+    "modmenu": ">=${mod_menu_version}"
   }
 }

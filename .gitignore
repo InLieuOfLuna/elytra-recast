@@ -111,6 +111,13 @@ gradle-app.setting
 
 **/build/
 run/
+fabric/bin/
+.kotlin/
+.settings/
+fabric/.classpath
+fabric/.factorypath
+fabric/.project
+.project
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
