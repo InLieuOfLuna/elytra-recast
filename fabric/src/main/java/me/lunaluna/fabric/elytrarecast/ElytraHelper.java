@@ -19,7 +19,7 @@ public class ElytraHelper {
             return false;
     }
 
-    private static boolean checkElytra(ClientPlayerEntity player) {
+    public static boolean checkElytra(ClientPlayerEntity player) {
         if (player.input.jumping && !player.getAbilities().flying && !player.hasVehicle() && !player.isClimbing()) {
             var itemStack = player.getEquippedStack(EquipmentSlot.CHEST);
             return itemStack.isOf(Items.ELYTRA) && ElytraItem.isUsable(itemStack);
@@ -27,7 +27,7 @@ public class ElytraHelper {
             return false;
     }
 
-    private static boolean checkFallFlyingIgnoreGround(ClientPlayerEntity player) {
+    public static boolean checkFallFlyingIgnoreGround(ClientPlayerEntity player) {
         if (!player.isTouchingWater() && !player.hasStatusEffect(StatusEffects.LEVITATION)) {
             var itemStack = player.getEquippedStack(EquipmentSlot.CHEST);
             if (itemStack.isOf(Items.ELYTRA) && ElytraItem.isUsable(itemStack)) {

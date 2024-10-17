@@ -31,9 +31,6 @@ dependencies {
 
     // Gson
     implementation "com.google.code.gson:gson:$gson_version"
-
-    // Kotlin
-    modImplementation "net.fabricmc:fabric-language-kotlin:$kotlin_mod_version+kotlin.$kotlin_version"
 }
 
 processResources {
