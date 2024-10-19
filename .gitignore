@@ -102,6 +102,9 @@ $RECYCLE.BIN/
 
 .gradle
 build/
+versions/*/bin/
+versions/*/.classpath
+versions/*/.factorypath
 
 # Ignore Gradle GUI config
 gradle-app.setting
