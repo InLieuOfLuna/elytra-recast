@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Environment(EnvType.CLIENT)
 abstract class PlayerMixin {
 
+    @SuppressWarnings("resource") // As its getting a singleton this doesn't need to be closed
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;
     }
@@ -31,17 +32,21 @@ abstract class PlayerMixin {
     @SuppressWarnings("ConstantConditions")
     @Inject(method = "tickFallFlying", at = @At("TAIL"))
     public void recastIfLanded(CallbackInfo ci) {
-        if (player() == null || !((Object) this instanceof ClientPlayerEntity)) return;
+        if (player() == null || !((Object) this instanceof ClientPlayerEntity))
+            return;
         boolean elytra = isFallFlying();
         if (awaitingElytra) {
-            if (elytra) awaitingElytra = false;
+            if (elytra)
+                awaitingElytra = false;
         } else if (!elytra && previousElytra) {
-            MinecraftClient.getInstance().getSoundManager().stopSounds(SoundEvents.ITEM_ELYTRA_FLYING.getId(), SoundCategory.PLAYERS);
+            MinecraftClient.getInstance().getSoundManager().stopSounds(SoundEvents.ITEM_ELYTRA_FLYING.getId(),
+                    SoundCategory.PLAYERS);
             ElytraHelper.castElytra(player());
             awaitingElytra = ElytraHelper.checkElytra(player());
         }
         previousElytra = elytra;
     }
+
     @Shadow
-    protected abstract boolean isFallFlying();
+    public abstract boolean isFallFlying();
 }
