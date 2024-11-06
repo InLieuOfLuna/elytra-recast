@@ -35,7 +35,7 @@ public class ElytraRecastConfig {
 		jsonObject.addProperty("jumpCooldown", jumpCooldown);
 
 		try (Writer writer = new FileWriter(configFile)) {
-			new Gson().toJson(jsonObject);
+			writer.write(new Gson().toJson(jsonObject));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
