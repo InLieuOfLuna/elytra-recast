@@ -56,6 +56,8 @@ public class ElytraRecastConfig {
 				jumpCooldown = objectFromFile.get("jumpCooldown").getAsInt();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
+		} catch (IllegalStateException e) {
+			save();
 		}
 	}
 }

@@ -20,6 +20,7 @@ public class PlayerJumpCooldownMixin {
     @Shadow
     private int jumpingCooldown;
 
+    @SuppressWarnings("resource")
     private ClientPlayerEntity player() {
         return MinecraftClient.getInstance().player;
     }
