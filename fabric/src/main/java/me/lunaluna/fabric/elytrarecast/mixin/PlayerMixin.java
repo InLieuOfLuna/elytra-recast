@@ -29,16 +29,16 @@ abstract class PlayerMixin {
     private boolean awaitingElytra = false;
 
     @SuppressWarnings("ConstantConditions")
-    @Inject(method = "tickFallFlying", at = @At("TAIL"))
+    @Inject(method = "tickMovement", at = @At("TAIL"))
     public void recastIfLanded(CallbackInfo ci) {
         if (player() == null || !((Object) this instanceof ClientPlayerEntity))
             return;
-        boolean elytra = isFallFlying();
+        boolean elytra = isGliding();
         if (awaitingElytra) {
             if (elytra)
                 awaitingElytra = false;
         } else if (!elytra && previousElytra) {
-            MinecraftClient.getInstance().getSoundManager().stopSounds(SoundEvents.ITEM_ELYTRA_FLYING.getId(),
+            MinecraftClient.getInstance().getSoundManager().stopSounds(SoundEvents.ITEM_ELYTRA_FLYING.id(),
                     SoundCategory.PLAYERS);
             ElytraHelper.castElytra(player());
             awaitingElytra = ElytraHelper.checkElytra(player());
@@ -47,5 +47,5 @@ abstract class PlayerMixin {
     }
 
     @Shadow
-    public abstract boolean isFallFlying();
+    public abstract boolean isGliding();
 }
