@@ -3,7 +3,6 @@ package me.lunaluna.fabric.elytrarecast;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ElytraItem;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 
@@ -20,9 +19,9 @@ public class ElytraHelper {
     }
 
     public static boolean checkElytra(ClientPlayerEntity player) {
-        if (player.input.jumping && !player.getAbilities().flying && !player.hasVehicle() && !player.isClimbing()) {
+        if (player.input.playerInput.jump() && !player.getAbilities().flying && !player.hasVehicle() && !player.isClimbing()) {
             var itemStack = player.getEquippedStack(EquipmentSlot.CHEST);
-            return itemStack.isOf(Items.ELYTRA) && ElytraItem.isUsable(itemStack);
+            return itemStack.isOf(Items.ELYTRA);
         } else
             return false;
     }
@@ -30,8 +29,8 @@ public class ElytraHelper {
     public static boolean checkFallFlyingIgnoreGround(ClientPlayerEntity player) {
         if (!player.isTouchingWater() && !player.hasStatusEffect(StatusEffects.LEVITATION)) {
             var itemStack = player.getEquippedStack(EquipmentSlot.CHEST);
-            if (itemStack.isOf(Items.ELYTRA) && ElytraItem.isUsable(itemStack)) {
-                player.startFallFlying();
+            if (itemStack.isOf(Items.ELYTRA)) {
+                player.startGliding();
                 return true;
             } else
                 return false;
